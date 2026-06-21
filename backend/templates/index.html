@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PhishShield</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>🛡️ PhishShield</h1>
+
+    <h3>AI Email Threat Analyzer</h3>
+
+    <form method="POST"
+      action="/analyze"
+      enctype="multipart/form-data">
+
+    <textarea
+        name="email_content"
+        rows="15"
+        placeholder="Paste suspicious email here..."
+        required>
+    </textarea>
+    
+    <br><br>
+
+    <label>Upload .EML Email File</label>
+
+    <br><br>
+
+    <input type="file"
+        name="email_file"
+        accept=".eml">
+
+    <br><br>
+
+    <button type="submit">
+        Analyze Email
+    </button>
+
+</form>
+
+</body>
+
+</html>
