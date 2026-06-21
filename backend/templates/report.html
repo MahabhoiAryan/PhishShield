@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+  <head>
+    <title>PhishShield Report</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <h1>🛡️ PhishShield Analysis Report</h1>
+
+    <div
+      class="risk-badge"
+      style=" background:{{ badge_color }};
+    padding:15px;
+    width:250px;
+    border-radius:10px;
+    font-weight:bold;"
+    >
+      Risk Level: {{ risk }}
+    </div>
+
+
+    <h2 style="color: {{ badge_color }}">Risk Score: {{ score }}/100</h2>
+
+    <div
+      style="
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        justify-content: center;
+      "
+    >
+      <div
+        style="
+          background: #1e293b;
+          padding: 15px;
+          border-radius: 10px;
+          width: 180px;
+          text-align: center;
+          font-size: 18px;
+        "
+      >
+        URLs Found<br />
+        <b>{{ url_count }}</b>
+      </div>
+
+      <div
+        style="
+          background: #1e293b;
+          padding: 15px;
+          border-radius: 10px;
+          width: 180px;
+          text-align: center;
+          font-size: 18px;
+        "
+      >
+        Indicators<br />
+        <b>{{ indicator_count }}</b>
+      </div>
+
+      <div
+        style="
+          background: #1e293b;
+          padding: 15px;
+          border-radius: 10px;
+          width: 180px;
+          text-align: center;
+          font-size: 18px;
+        "
+      >
+        Senders<br />
+        <b>{{ sender_count }}</b>
+      </div>
+    </div>
+
+    <h3>Threat Summary</h3>
+
+    <p>{{ summary }}</p>
+
+    <div class="dashboard-grid">
+      <div class="analysis-card">
+        <h3>Suspicious URLs</h3>
+
+        <div class="item-list">
+          {% for url in suspicious_urls %}
+          <div class="item">{{ url }}</div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="analysis-card">
+        <h3>Suspicious Subject Indicators</h3>
+
+        <div class="item-list">
+          {% for item in subject_findings %}
+          <div class="item">{{ item }}</div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="analysis-card">
+        <h3>Header Analysis</h3>
+
+        {% for item in header_findings %}
+        <div class="item">{{ item }}</div>
+        {% endfor %} {% if not header_findings %}
+        <div class="item">No suspicious headers detected</div>
+        {% endif %}
+      </div>
+
+      <div class="analysis-card">
+        <h3>Detected Indicators</h3>
+
+        {% for word in detected_words %}
+        <div class="item">{{ word }}</div>
+        {% endfor %}
+      </div>
+
+      <div class="analysis-card">
+        <h3>Suspicious Senders</h3>
+
+        {% for sender in sender_findings %}
+        <div class="item">{{ sender }}</div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div style="margin-top: 40px">
+      <a
+        href="/"
+        style="
+          background: #2563eb;
+          padding: 12px 20px;
+          border-radius: 8px;
+          color: white;
+          text-decoration: none;
+        "
+      >
+        📧 Analyze Another EML
+      </a>
+    </div>
+  </body>
+</html>
