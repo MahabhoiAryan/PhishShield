@@ -12,11 +12,11 @@ Users can either paste email content directly into the application or upload `.e
 
 ### Dashboard Home Page
 
-![Dashboard](dummy text file\dashboard-report.png)
+![Dashboard](images-file/dashboard-report.png)
 
 ### Threat Analysis Report
 
-![Analysis Report](dummy text file\main-landing.png)
+![Analysis Report](images-file/main-landing.png)
 
 ---
 
